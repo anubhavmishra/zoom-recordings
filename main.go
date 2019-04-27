@@ -56,7 +56,10 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Page size is set to 100 explictly.
 	hundred := int(100)
+	// We are only supplying limited options to ListAllRecordingOptions.
+	// next_page_token, trash, and mc aren't supplied.
 	recordings, err := zoom.ListAllRecordings(zoom.ListAllRecordingsOptions{
 		UserID:   user.ID,
 		From:     from,
