@@ -1,0 +1,10 @@
+module github.com/anubhavmishra/zoom-recordings
+
+go 1.12
+
+require (
+	github.com/anubhavmishra/zoom-lib-golang v0.0.0-20190427173252-6319ded70bfa
+	github.com/google/go-querystring v1.0.0 // indirect
+	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db
+	gopkg.in/dgrijalva/jwt-go.v3 v3.2.0 // indirect
+)
