@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/mitchellh/colorstring"
+	"github.com/olekukonko/tablewriter"
 
 	zoom "github.com/anubhavmishra/zoom-lib-golang"
 )
@@ -22,6 +23,7 @@ func main() {
 	var to string
 	var email string
 	var debug bool
+	var outputTable bool
 
 	flag.StringVar(&from, "from", "", "The date and time to start looking up recordings. Example: 2019-03-26T19:51:10.661Z."+
 		"The date range has to be within one month.")
@@ -31,6 +33,7 @@ func main() {
 		" using the \"ZOOM_ACCOUNT_EMAIL\" environment variable.")
 	meetingID := flag.Int("meeting-id", 0, "Zoom meeting id to filter.")
 	flag.BoolVar(&debug, "debug", false, "Enable or disable debugging. Set to false by default.")
+	flag.BoolVar(&outputTable, "table", false, "Enable or disable output in table format. Set to false by default.")
 
 	flag.Parse()
 
@@ -56,6 +59,9 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Map to store meeting recording data
+	data := [][]string{}
+
 	// Page size is set to 100 explictly.
 	hundred := int(100)
 	// We are only supplying limited options to ListAllRecordingOptions.
@@ -73,17 +79,35 @@ func main() {
 
 	colorstring.Printf("[white]All cloud recordings from %s to %s:\n", from, to)
 
-	fmt.Println("||Name||Date and Time||Meeting Recording URL||")
 	for _, meeting := range recordings.Meetings {
 		for _, recording := range meeting.RecordingFiles {
 			if recording.RecordingType == "shared_screen_with_speaker_view" {
 				if *meetingID != 0 {
 					if meeting.ID == *meetingID {
-						fmt.Printf("|%s|%s|%s|\n", meeting.Topic, meeting.StartTime, recording.PlayURL)
+						data = append(data, []string{meeting.Topic, meeting.StartTime.String(), recording.PlayURL})
 					}
 				}
 			}
 		}
 	}
 
+	// Output table if enabled.
+	if outputTable {
+		colorstring.Println("[white]Output type [green]\"table\".\n")
+		table := tablewriter.NewWriter(os.Stdout)
+		table.SetHeader([]string{"Name", "Date and Time", "Meeting Recording URL"})
+
+		for _, v := range data {
+			table.Append(v)
+		}
+		table.Render()
+		return
+	}
+
+	colorstring.Println("[white]Output type [green]\"confluence markup\".\n")
+	// Output confluence markup format
+	fmt.Println("||Name||Date and Time||Meeting Recording URL||")
+	for _, v := range data {
+		fmt.Printf("|%s|%s|%s|\n", v[0], v[1], v[2])
+	}
 }
