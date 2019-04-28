@@ -24,9 +24,9 @@ func main() {
 	var debug bool
 
 	flag.StringVar(&from, "from", "", "The date and time to start looking up recordings. Example: 2019-03-26T19:51:10.661Z."+
-		"The date range has to be within six months.")
+		"The date range has to be within one month.")
 	flag.StringVar(&to, "to", "", "The date and time to end looking up recordings. Example: 2019-04-26T19:51:10.661Z."+
-		"The date range has to be within six months.")
+		"The date range has to be within one month.")
 	flag.StringVar(&email, "account-email", os.Getenv("ZOOM_ACCOUNT_EMAIL"), "Zoom account email. It can also be supplied by"+
 		" using the \"ZOOM_ACCOUNT_EMAIL\" environment variable.")
 	meetingID := flag.Int("meeting-id", 0, "Zoom meeting id to filter.")
@@ -71,7 +71,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	colorstring.Printf("[white]All cloud recordings from %d to %d:\n", from, to)
+	colorstring.Printf("[white]All cloud recordings from %s to %s:\n", from, to)
 
 	fmt.Println("||Name||Date and Time||Meeting Recording URL||")
 	for _, meeting := range recordings.Meetings {
