@@ -45,6 +45,8 @@ Usage of ./zoom-recordings:
         The date and time to start looking up recordings. Example: 2019-03-26T19:51:10.661Z.The date range has to be within one month.
   -meeting-id int
         Zoom meeting id to filter.
+  -table
+        Enable or disable output in table format. Set to false by default.
   -to string
         The date and time to end looking up recordings. Example: 2019-04-26T19:51:10.661Z.The date range has to be within one month.
 ```
