@@ -108,6 +108,6 @@ func main() {
 	// Output confluence markup format
 	fmt.Println("||Name||Date and Time||Meeting Recording URL||")
 	for _, v := range data {
-		fmt.Printf("|%s|%s|%s|\n", v[0], v[1], v[2])
+		fmt.Printf("|%s|%s|[%s]|\n", v[0], v[1], v[2])
 	}
 }
