@@ -1,0 +1,13 @@
+---
+language: go
+go:
+  - 1.9.x
+script:
+  - ./fmtpolice
+  - go test -tags integration -v ./...
+notifications:
+  email:
+    recipients:
+      - webteam@himalayaninstitute.org
+    on_success: never
+    on_failure: change
