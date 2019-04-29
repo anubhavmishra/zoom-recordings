@@ -22,7 +22,7 @@ cd $GOPATH/src/github.com/anubhavmishra/zoom-recordings
 ```
 
 ```bash
-go build .
+make build
 ```
 
 Set JWT Zoom API credentials
