@@ -1,5 +1,7 @@
 github.com/anubhavmishra/zoom-lib-golang v0.0.0-20190427173252-6319ded70bfa h1:alZc1IEMgLbe5r+fdIHtG0sL+FR0idywriaClE1EqBg=
 github.com/anubhavmishra/zoom-lib-golang v0.0.0-20190427173252-6319ded70bfa/go.mod h1:r7baiX/uRGkJQavsGXUx7abmaGLZYbK+MH4gpy5LXsM=
+github.com/dgrijalva/jwt-go v3.2.0+incompatible h1:7qlOGliEKZXTDg6OTjfoBKDXWrumCAMpl/TFQ4/5kLM=
+github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/google/go-querystring v1.0.0 h1:Xkwi/a1rcvNg1PPYe5vI8GbeBY/jrVuDX5ASuANWTrk=
 github.com/google/go-querystring v1.0.0/go.mod h1:odCYkC5MyYFN7vkCjXpyrEuKhc/BUO6wN/zVPAxq5ck=
 github.com/mattn/go-runewidth v0.0.4 h1:2BvfKmzob6Bmd4YsL0zygOqfdFnK7GR4QL06Do4/p7Y=
